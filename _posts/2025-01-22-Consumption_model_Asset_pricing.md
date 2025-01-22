@@ -8,6 +8,7 @@ tag: [Finance]
 ---
 
 
+{% katexmm %}
 
 ## Introduction 
 
@@ -184,6 +185,6 @@ L'article "Taming the Factor Zoo: A Test of New Factors" propose une méthodolog
 
 
 
-
+{% endkatexmm %}
 
 
