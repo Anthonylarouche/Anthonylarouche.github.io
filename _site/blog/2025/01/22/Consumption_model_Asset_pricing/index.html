@@ -11,27 +11,20 @@
     <link href='/css/blog.css' rel='stylesheet'/>
     <link href='/css/markdown.css' rel='stylesheet'/>
 
-    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MathJax Example</title>
-    <script type="text/javascript">
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$']],   // Inline math
-                displayMath: [['$$', '$$']] // Display math
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-            }
-        };
-    </script>
-  
+    <script type='text/javascript'>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
   <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 </head>
 <body>
 <div class='content'>
@@ -87,7 +80,7 @@
 
 <p>L’équation \ref{eq:utilite} nous indique que pour maximiser son utilité, il faut prendre en compte la consommation future. Supposons qu’aujourd’hui nous avons un potentiel de consommation $\gamma_t$ et que nous souhaitons savoir combien investir ($\xi$) à un prix $P_t$. Il suffit alors de maximiser la fonction (1) avec les contraintes suivantes :</p>
 
-<p>$c_t = \gamma_t - P_t \xi$<br />
+<p>$c_t = \gamma_t - P_t \xi$ <br />
 $ c_{t+1} = \gamma_t + x_{t+1} \xi $</p>
 
 <p>On remplace $c_t$ et $c_{t+1}$ par les contraintes et dérivons par rapport à $\xi$. On égalise la dérivé à 0 et ensuite on isole $P_t$, afin d’obtenir une expression de prix. Le résultat est le suivant :</p>

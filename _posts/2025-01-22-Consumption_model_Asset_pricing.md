@@ -34,7 +34,7 @@ Une fonction d'[utilité](https://fr.wikipedia.org/wiki/Utilit%C3%A9_(%C3%A9cono
 L’équation \ref{eq:utilite} nous indique que pour maximiser son utilité, il faut prendre en compte la consommation future. Supposons qu’aujourd’hui nous avons un potentiel de consommation $\gamma_t$ et que nous souhaitons savoir combien investir ($\xi$) à un prix $P_t$. Il suffit alors de maximiser la fonction (1) avec les contraintes suivantes :
 
 
-$c_t = \gamma_t - P_t \xi$\\
+$c_t = \gamma_t - P_t \xi$ \\
 $ c_{t+1} = \gamma_t + x_{t+1} \xi $
 
 
