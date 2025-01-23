@@ -29,7 +29,9 @@
         };
     </script>
   
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 </head>
 <body>
 <div class='content'>
@@ -138,18 +140,18 @@ R_f = \frac{1}{E[m]} \tag{4}
 
 <p>On peut se demander comment $m$ varie avec les gains $x$. En général, un actif plus risqué devrait bien performer lorsque l’économie se porte bien, et ainsi, être corrélé positivement avec la consommation. Cependant, étant donné que l’utilité marginale décroît avec l’augmentation de la consommation, le stochastic discount factor aura une relation négative avec les gains futurs d’un actif. Examinons de plus près l’équation de la covariance :</p>
 
-<p>\begin{aligned}
-cov(m,x) &amp;= E(mx) - E(m)E(x) <br />
-\end{aligned}
-\begin{aligned}
-&amp;\rightarrow E(mx) = E(m)E(x) + cov(m,x) <br />
-\end{aligned}
-\begin{aligned}
-&amp;\rightarrow P = E(m)E(x) + cov(m,x) <br />
-\end{aligned}
-\begin{aligned}
+\[\begin{aligned}
+cov(m,x) &amp;= E(mx) - E(m)E(x) \\
+
+
+&amp;\rightarrow E(mx) = E(m)E(x) + cov(m,x) \\
+
+
+&amp;\rightarrow P = E(m)E(x) + cov(m,x) \\
+
+
 &amp;\rightarrow P = \frac{E(x)}{R_f} + cov(m,x)
-\end{aligned}</p>
+\end{aligned}\]
 
 <p>Nous retrouvons ici l’expression du prix, qui repose sur deux éléments : le prix des gains futurs actualisés par le taux sans risque, et l’ajustement en fonction du risque via la covariance. Comme mentionné précédemment, la covariance entre $m$ et $x$ sera négative pour les actifs risqués. Le prix sera donc ajusté en fonction du risque et l’investisseur paiera un prix inférieur pour un actif risqué par rapport à un actif sans risque. Si nous exprimons cela en termes de rendement, en divisant par le prix $P$ et en réarrangeant les termes, nous obtenons :</p>
 

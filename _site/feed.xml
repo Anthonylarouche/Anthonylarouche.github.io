@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-22T19:58:36-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Anthonylarouche.github.io</title><entry><title type="html">Consommation et primes de risque : comment les investisseurs déterminent le prix des actifs</title><link href="http://localhost:4000/blog/2025/01/22/Consumption_model_Asset_pricing/" rel="alternate" type="text/html" title="Consommation et primes de risque : comment les investisseurs déterminent le prix des actifs" /><published>2025-01-22T00:00:00-05:00</published><updated>2025-01-22T00:00:00-05:00</updated><id>http://localhost:4000/blog/2025/01/22/Consumption_model_Asset_pricing</id><content type="html" xml:base="http://localhost:4000/blog/2025/01/22/Consumption_model_Asset_pricing/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-22T20:03:23-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Anthonylarouche.github.io</title><entry><title type="html">Consommation et primes de risque : comment les investisseurs déterminent le prix des actifs</title><link href="http://localhost:4000/blog/2025/01/22/Consumption_model_Asset_pricing/" rel="alternate" type="text/html" title="Consommation et primes de risque : comment les investisseurs déterminent le prix des actifs" /><published>2025-01-22T00:00:00-05:00</published><updated>2025-01-22T00:00:00-05:00</updated><id>http://localhost:4000/blog/2025/01/22/Consumption_model_Asset_pricing</id><content type="html" xml:base="http://localhost:4000/blog/2025/01/22/Consumption_model_Asset_pricing/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Dans le cadre de ma maîtrise en statistique, j’ai eu l’opportunité d’explorer des concepts fondamentaux de la finance académique, notamment les modèles factoriels qui visent à expliquer les rendements attendus des actifs financiers. Au début, ces notions m’ont semblé complexes, ce qui m’a conduit à les reformuler dans mes propres mots pour mieux les comprendre.</p>
 
@@ -81,18 +81,18 @@ R_f = \frac{1}{E[m]} \tag{4}
 
 <p>On peut se demander comment $m$ varie avec les gains $x$. En général, un actif plus risqué devrait bien performer lorsque l’économie se porte bien, et ainsi, être corrélé positivement avec la consommation. Cependant, étant donné que l’utilité marginale décroît avec l’augmentation de la consommation, le stochastic discount factor aura une relation négative avec les gains futurs d’un actif. Examinons de plus près l’équation de la covariance :</p>
 
-<p>\begin{aligned}
-cov(m,x) &amp;= E(mx) - E(m)E(x) <br />
-\end{aligned}
-\begin{aligned}
-&amp;\rightarrow E(mx) = E(m)E(x) + cov(m,x) <br />
-\end{aligned}
-\begin{aligned}
-&amp;\rightarrow P = E(m)E(x) + cov(m,x) <br />
-\end{aligned}
-\begin{aligned}
+\[\begin{aligned}
+cov(m,x) &amp;= E(mx) - E(m)E(x) \\
+
+
+&amp;\rightarrow E(mx) = E(m)E(x) + cov(m,x) \\
+
+
+&amp;\rightarrow P = E(m)E(x) + cov(m,x) \\
+
+
 &amp;\rightarrow P = \frac{E(x)}{R_f} + cov(m,x)
-\end{aligned}</p>
+\end{aligned}\]
 
 <p>Nous retrouvons ici l’expression du prix, qui repose sur deux éléments : le prix des gains futurs actualisés par le taux sans risque, et l’ajustement en fonction du risque via la covariance. Comme mentionné précédemment, la covariance entre $m$ et $x$ sera négative pour les actifs risqués. Le prix sera donc ajusté en fonction du risque et l’investisseur paiera un prix inférieur pour un actif risqué par rapport à un actif sans risque. Si nous exprimons cela en termes de rendement, en divisant par le prix $P$ et en réarrangeant les termes, nous obtenons :</p>
 
