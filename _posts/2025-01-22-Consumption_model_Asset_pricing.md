@@ -8,8 +8,6 @@ tag: [Finance]
 ---
 
 
-{% katexmm %}
-
 ## Introduction 
 
 Dans le cadre de ma maîtrise en statistique, j’ai eu l’opportunité d’explorer des concepts fondamentaux de la finance académique, notamment les modèles factoriels qui visent à expliquer les rendements attendus des actifs financiers. Au début, ces notions m’ont semblé complexes, ce qui m’a conduit à les reformuler dans mes propres mots pour mieux les comprendre.
@@ -35,16 +33,16 @@ Une fonction d'[utilité](https://fr.wikipedia.org/wiki/Utilit%C3%A9_(%C3%A9cono
 
 L’équation \ref{eq:utilite} nous indique que pour maximiser son utilité, il faut prendre en compte la consommation future. Supposons qu’aujourd’hui nous avons un potentiel de consommation $\gamma_t$ et que nous souhaitons savoir combien investir ($\xi$) à un prix $P_t$. Il suffit alors de maximiser la fonction (1) avec les contraintes suivantes :
 
-$$
-c_t = \gamma_t - P_t \xi \\
-c_{t+1} = \gamma_t + x_{t+1} \xi
-$$
+
+$c_t = \gamma_t - P_t \xi$\\
+$ c_{t+1} = \gamma_t + x_{t+1} \xi $
+
 
 On remplace $c_t$ et $c_{t+1}$ par les contraintes et dérivons par rapport à $\xi$. On égalise la dérivé à 0 et ensuite on isole $P_t$, afin d'obtenir une expression de prix. Le résultat est le suivant :
 
-$$
+\begin{align}
 P_t = E_t \left [\beta \frac{u'(c_{t+1})}{u'(c_t)}x_{t+1} \right ] \tag{2}
-$$
+\end{align}
 
 L’équation (2) montre que si l’investisseur valorise davantage la consommation future, son utilité marginale sera plus grande pour la consommation future que pour la consommation actuelle. Avec un $\beta$ fixe, la constante d'actualisation sera plus élevée et l'investisseur sera prêt à payer plus cher pour un actif qui lui garantit des flux d’argent futurs. Par exemple, si vous prévoyez prendre votre retraite dans 5 ans, vous risquez de diminuer votre consommation, mais vous la valoriserez davantage et serez moins enclin à prendre des risques. Vous opterez probablement pour un actif sans risque.
 
@@ -52,17 +50,17 @@ L’équation (2) montre que si l’investisseur valorise davantage la consommat
 
 Dans la littérature, il est commun d'appeler la constante d'actualisation des gains le *stochastic discount factor*. Dans plusieurs articles, ceci réfère à la variable $M_{t+1}$. Alors, la représentation finale du prix est la suivante, 
 
-$$
+\begin{align}
 P_{i,t} = E\left[M_{t+1}x_{t+1}\right].
-$$
+\end{align}
 
 ## Le prix est une prédiction
 
 À partir de maintenant, simplifions l'équation du prix en retirant les indices temporelles.
 
-$$
+\begin{align}
 P_{i} = E[Mx]
-$$
+\end{align}
 
 Le prix $P_i$ est toujours exprimé à un instant $t$, sauf indication contraire, et $E_t$ est conditionné par l’information disponible à cet instant. De même, $M_{t+1}$ et $X_{t+1}$ sont inconnus et se réfèrent à des valeurs futures.
 
@@ -70,42 +68,49 @@ Comme le mentionnent Kelly et Xiu (2023), le prix représente la prédiction des
 
 Pour des raisons techniques, il est souhaitable de travailler sur une même échelle en normalisant les gains futures par le prix.
 
-$$
+\begin{align}
 R_{i} = \frac{X_{i,t+1}}{P_{i}},
-$$
+\end{align}
 
 est nul autre que le rendement brut de l'actif $i$ pour la période $t$ à $t+1$.
 
 Comme le souligne Cochrane (2009), un rendement brut peut être interprété comme un actif ayant un prix de 1 dans l’équation suivante :
 
-$$
+\begin{align}
 1 = E[mR] \tag{3}
-$$
+\end{align}
 
 À partir de l’équation (3), nous pouvons lier le stochastic discount factor au taux de l’actif sans risque. En effet, étant donné qu’il n’y a pas de "risque" ou de variation dans le rendement $R_f$, la propriété de la linéarisation de l'espérance nous permet de sortir la constante $R_f$ de l'équation $1 = E[m]R_f$. Il suffit d'isoler et nous retrouvons l'identité suivante,
-$$
+
+\begin{align}
 R_f = \frac{1}{E[m]} \tag{4}
-$$
+\end{align}
 
 On peut se demander comment $m$ varie avec les gains $x$. En général, un actif plus risqué devrait bien performer lorsque l’économie se porte bien, et ainsi, être corrélé positivement avec la consommation. Cependant, étant donné que l’utilité marginale décroît avec l’augmentation de la consommation, le stochastic discount factor aura une relation négative avec les gains futurs d’un actif. Examinons de plus près l’équation de la covariance :
+
 $$
-cov(m,x) = E(mx) - E(m)E(x) \\
- \rightarrow E(mx) = E(m)E(x) + cov(m,x) \\
- \rightarrow P = E(m)E(x) + cov(m,x) \\
+\begin{align}
+cov(m,x) = E(mx) - E(m)E(x)
+ \\
+ \rightarrow E(mx) = E(m)E(x) + cov(m,x)
+  \\
+ \rightarrow P = E(m)E(x) + cov(m,x)
+  \\
  \rightarrow P = \frac{E(x)}{R_f} + cov(m,x)
+\end{align}
 $$
 
 Nous retrouvons ici l’expression du prix, qui repose sur deux éléments : le prix des gains futurs actualisés par le taux sans risque, et l’ajustement en fonction du risque via la covariance. Comme mentionné précédemment, la covariance entre $m$ et $x$ sera négative pour les actifs risqués. Le prix sera donc ajusté en fonction du risque et l’investisseur paiera un prix inférieur pour un actif risqué par rapport à un actif sans risque. Si nous exprimons cela en termes de rendement, en divisant par le prix $P$ et en réarrangeant les termes, nous obtenons :
 
-$$
+\begin{align}
 R_i - R_f = -R_fcov(m,R_i)
-$$
+\end{align}
 
 Le rendement excédentaire de l’actif $i$ est donc expliqué par $-R_fcov(m,R_i)$. Cela est cohérent avec notre description précédente : la partie droite de l’équation sera positive lorsque la covariance est négative. En remplaçant $R_f$ par l’expression de l’équation (4), 
 
-$$
+\begin{align}
 R_i  =R_f -\frac{cov(m,R_i)}{E(m)}.
-$$
+\end{align}
 
 
 ## Représentation Bêta
@@ -114,9 +119,9 @@ En finance académique, la notion de représentation bêta est utilisée pour d�
 
 L’équation suivante reformule la relation entre le rendement excédentaire attendu et le stochastic discount factor :
 
-$$
+\begin{align}
 R_i  =R_f + \frac{cov(m,R_i)}{var(m)}\left(-\frac{var(m)}{E(m)}\right).
-$$
+\end{align}
 
 Dans cette expression :  
 - $\frac{\displaystyle \text{cov}(m, R_i)}{\displaystyle \text{var}(m)}$ représente la **quantité de risque**, c’est-à-dire la sensibilité du rendement d’un actif $R_i$ au stochastic discount factor $m$.  
@@ -140,9 +145,9 @@ Cette représentation met en évidence que les investisseurs exigent une prime $
 
 Le **Capital Asset Pricing Model** (CAPM), introduit par Sharpe (1964), repose sur l'idée qu'un seul facteur explique les rendements excédentaires des actifs : le risque du marché. L’équation du modèle s’écrit comme suit :
 
-$$
+\begin{align}
 E(R_i) - R_f = \beta_{i,m} \lambda_m,
-$$
+\end{align}
 
 où :  
 - $\beta_{i,m}$ est la sensibilité du rendement de l’actif $i$ au facteur de risque marché.  
@@ -162,9 +167,9 @@ En réponse aux limites du CAPM, Fama et French (1993) ont proposé un modèle �
 
 L’équation s’écrit alors :
 
-$$
+\begin{align}
 E(R_i) - R_f = \beta_{i,m} \lambda_m + \beta_{i,SMB} \lambda_{SMB} + \beta_{i,HML} \lambda_{HML}.
-$$
+\end{align}
 
 Ce modèle permet d'expliquer entre 70 % et 90 % des variations des rendements excédentaires, une amélioration significative par rapport au CAPM.
 
@@ -184,7 +189,5 @@ L'article "Taming the Factor Zoo: A Test of New Factors" propose une méthodolog
 ## Conclusion 
 
 
-
-{% endkatexmm %}
 
 
