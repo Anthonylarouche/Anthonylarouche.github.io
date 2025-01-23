@@ -27,11 +27,7 @@ url: https://anthonylarouche.github.io/
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-katex
 
-markdown: kramdown
-kramdown:
-    math_engine: katex
 
 katex:
   js_path: "assets"  # Path used to search for katex.min.js

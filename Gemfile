@@ -4,9 +4,9 @@ source "https://rubygems.org"
 gem "github-pages", group: :jekyll_plugins
 
 # Plugins supplémentaires pour enrichir votre site
-group :jekyll_plugins do
-  gem "jekyll-katex" # Support pour les mathématiques (LaTeX)
-end
+#group :jekyll_plugins do
+  #gem "jekyll-katex" # Support pour les mathématiques (LaTeX)
+#end
 
 # Compatibilité avec les environnements Windows ou JRuby
 platforms :mingw, :x64_mingw, :mswin, :jruby do
