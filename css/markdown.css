@@ -680,3 +680,19 @@
   .markdown-body hr {
     border-bottom-color: #eee;
   }
+
+ 
+  .katex {
+    font-size: 1.15em;
+    line-height: 1.5;
+    font-weight: normal;
+  }
+
+  .katex-display {
+    margin: 1.5em 0;
+    text-align: center;
+  }
+
+  .katex .mord, .katex .mop {
+    font-family: "Latin Modern Math", "Times New Roman", serif;
+  }
