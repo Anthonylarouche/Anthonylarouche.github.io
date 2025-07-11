@@ -21,12 +21,14 @@
 highlighter: rouge
 permalink: /blog/:year/:month/:day/:title/
 environment: prod
-url: https://anthonylarouche.github.io/
 
+url: https://anthonylarouche.github.io/
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-katex
+
 
 
 katex:
