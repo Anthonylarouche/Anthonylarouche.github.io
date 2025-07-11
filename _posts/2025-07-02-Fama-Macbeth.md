@@ -6,26 +6,6 @@ date: 2025-07-02
 categories: blog
 tag: [Finance]
 ---
-<!-- MathJax config (version 2.7.9) -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [["$", "$"]],
-      displayMath: [["$$", "$$"]],
-      processEscapes: true,
-      skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
-    },
-    "HTML-CSS": {
-      preferredFont: "TeX",
-      availableFonts: ["TeX"],
-      linebreaks: { automatic: true },
-      styles: { ".MathJax_Display": { "text-align": "center", "margin": "1em 0" } }
-    },
-    showProcessingMessages: false,
-    messageStyle: "none"
-  });
-</script>
-<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
 ## Mise en contexte
 
@@ -50,9 +30,9 @@ Ce modèle nous dit que les différences de rendement entre les actifs ne s’ex
 
 
 La version Sharpe-Linter du modèle s'écrit :
-$$
+\[
 E[R_i] - R_f = \beta_i (E[R_M] - R_f) \tag{1}
-$$
+\]
 
 Où :
 
