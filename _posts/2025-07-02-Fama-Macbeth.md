@@ -6,7 +6,7 @@ date: 2025-07-02
 categories: blog
 tag: [Finance]
 ---
-{% katexmm %}
+
 ## Mise en contexte
 
 Les modèles factoriels occupent une place centrale dans l’évaluation des actifs financiers. Parmi eux, le *Capital Asset Pricing Model (CAPM)* occupe une place à part. À la fois simple, élégant et ancré dans une intuition forte, ce modèle repose sur l'idée que plus un actif est exposé au risque du marché, plus le rendement que les investisseurs en attendent doit être élevé. Cette compensation est la prime de risque ou encore, le prix par unité de risque associé au risque systématique du marché.
@@ -487,5 +487,3 @@ price_of_risk <- risk_premiums |>
   </div>
 </div>
 
-
-{% endkatexmm %}
