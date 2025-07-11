@@ -15,10 +15,10 @@
 # gem "github-pages", group: :jekyll_plugins
 # If you have any plugins, put them here!
 # If you have any plugins, put them here!
-#group :jekyll_plugins do
-  #gem "jekyll-feed", "~> 0.12"
- # gem "jekyll-katex"
-#end
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-katex"
+end
 
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -37,7 +37,7 @@
 
 source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
+gem "github-pages"
 
 # Pour les utilisateurs Windows
 platforms :mingw, :x64_mingw, :mswin, :jruby do
