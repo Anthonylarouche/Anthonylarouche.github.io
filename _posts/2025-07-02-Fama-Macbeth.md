@@ -193,7 +193,7 @@ L’enjeu ici est que les erreurs de mesure sur les bêtas ne sont pas aléatoir
 
 Pour limiter cet effet, les bêtas des portefeuilles peuvent être réestimés sur une période ultérieure, par exemple de $T$ à $T + k$. L’objectif n’est pas de corriger parfaitement les bêtas individuels, mais de lisser les erreurs de mesure à travers l’agrégation. Ainsi, les bêtas de portefeuilles, calculés comme la moyenne des bêtas de leurs composantes, sont généralement plus stables et moins bruités.
 
-<img src="/assets/images/Capture d’écran, le 2025-07-08 à 10.44.39.png" alt="Diagramme Fama-MacBeth" style="max-width: 100%; height: auto;">
+<img src="/assets/Images/Capture d’écran, le 2025-07-08 à 10.44.39.png" alt="Diagramme Fama-MacBeth" style="max-width: 100%; height: auto;">
 
 La figure ci-dessus illustre cette logique. Chaque rectangle représente un portefeuille. Celui du haut regroupe les actifs aux bêtas estimés les plus élevés, tandis que celui du bas contient ceux aux bêtas les plus faibles. Le regroupement permet d’atténuer l’impact des erreurs individuelles ($u$) qui, en l’absence de correction, auraient tendance à biaiser les inférences statistiques.
 
