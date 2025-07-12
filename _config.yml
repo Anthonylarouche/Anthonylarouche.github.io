@@ -26,6 +26,8 @@ url: https://anthonylarouche.github.io/
 # Build settings
 theme: minima
 plugins:
+  - jekyll-scholar
+  - jekyll-sitemap
   - jekyll-feed
   - jekyll-katex
 
