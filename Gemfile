@@ -16,8 +16,10 @@ gem "minima", "~> 2.5"
 # If you have any plugins, put them here!
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
-  gem "jekyll-katex"
+	gem "jekyll-scholar"
+	gem "jekyll-sitemap"
+	gem "jekyll-feed"
+	gem "jekyll-katex"
 end
 
 
