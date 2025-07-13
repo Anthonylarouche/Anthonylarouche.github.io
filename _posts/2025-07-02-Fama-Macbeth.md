@@ -1,5 +1,5 @@
 ---
-title: L'échec empirique du CAPM
+title: La régression Fama-MacBeth
 subtitle: Le CAPM demeure le modèle privilégié pour enseigner la relation fondamentale entre risque et rendement. Pourtant, peu d’attention est généralement portée à son estimation pratique et à sa validité empirique. Dans ce texte, j’explore l’une des méthodologies les plus répandues en finance empirique, soit la régression de Fama-MacBeth. Je mets en lumière les principales difficultés rencontrées par les chercheurs pour estimer rigoureusement les primes de risque.
 layout: default
 date: 2025-07-02
