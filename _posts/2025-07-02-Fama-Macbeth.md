@@ -9,7 +9,7 @@ tag: [Finance]
 {% katexmm %}
 ## Mise en contexte
 
-Les modèles factoriels occupent une place centrale dans l’évaluation des actifs financiers. Parmi eux, le *Capital Asset Pricing Model (CAPM)* occupe une place à part. À la fois simple, élégant et ancré dans une intuition forte, ce modèle repose sur l'idée que plus un actif est exposé au risque du marché, plus le rendement que les investisseurs en attendent doit être élevé. Cette compensation est la prime de risque ou encore, le prix par unité de risque associé au risque systématique du marché.
+Les modèles factoriels occupent une place centrale dans l’évaluation des actifs financiers. Parmi eux, le *Capital Asset Pricing Model (CAPM)* occupe une place à part. À la fois simple, élégant et ancré dans une intuition forte, ce modèle repose sur l’idée qu’un actif davantage exposé au risque de marché doit, en moyenne, offrir un rendement plus élevé qu’un actif sans risque. Cette différence constitue la prime de risque, soit le prix par unité de risque systématique.
 
 Sur papier, le CAPM a tout pour plaire. Mais lorsqu’on le confronte aux données réelles, les choses se compliquent. D’importants défis statistiques apparaissent, remettant en question sa validité empirique.
 
@@ -26,7 +26,7 @@ Dans les années 1950, Harry Markowitz bouleverse la manière de penser les port
 
 Une dizaine d’années plus tard, William Sharpe (1964), bientôt rejoint par Lintner (1965) et Mossin (1966), pousse plus loin cette logique. Ils introduisent la notion de risque systématique : seul le risque lié aux mouvements globaux du marché devrait, selon eux, être récompensé. La première version du CAPM voit alors le jour.
 
-Ce modèle nous dit que les différences de rendement entre les actifs ne s’expliquent que par leur sensibilité au marché, mesurée par un coefficient appelé **bêta**. Autrement dit, ce n’est pas le risque total d’un actif qui compte, mais uniquement la part de ce risque que l’on ne peut pas diversifier.
+Ce modèle nous dit que les différences de rendement entre les actifs ne s’expliquent que par leur sensibilité au marché, mesurée par un coefficient appelé **bêta** ($\beta$). Autrement dit, ce n’est pas le risque total d’un actif qui compte, mais uniquement la part de ce risque que l’on ne peut pas diversifier.
 
 
 La version Sharpe-Linter du modèle s'écrit :
@@ -36,14 +36,14 @@ $$
 
 Où :
 
-- $E[R_i] $ : rendement espéré de l’actif *i*
+- $E[R_i] $ : rendement espéré de l’actif $i$
 - $ R_f $ : taux sans risque
 - $ \beta_i $ : sensibilité de l’actif *i* au portefeuille de marché
 - $ E[R_M] $ : rendement espéré du marché
 
 En d'autres mots, le rendement excédentaire espéré d’un actif est une fonction linéaire du rendement excédentaire du marché. 
 
-En théorie, le CAPM est un outil pédagogique remarquable pour illustrer le lien fondamental entre risque et rendement. Mais une question cruciale demeure : le modèle tient-il la route face aux données ? Et surtout, comment l’estimer rigoureusement, sachant que les $\beta_i $ et $ E[R_M] - R_f$ doivent eux-mêmes être estimés à partir des données observées ?
+En théorie, le CAPM est un outil pédagogique remarquable pour illustrer le lien fondamental entre risque et rendement. Mais une question cruciale demeure : le modèle tient-il la route face aux données ? Et surtout, comment ajuster le modèle rigoureusement, sachant que les $\beta_i $ et $ E[R_M] - R_f$ doivent eux-mêmes être estimés à partir des données observées ?
 
 
 ## Les premiers tests empiriques du CAPM
@@ -72,18 +72,18 @@ Les premiers tests utilisaient une stratégie en deux étapes :
 
 ### Étape 1: Estimation des bêtas individuels via une régression temporelle 
 
-Cette étape consiste à régresser les rendements de l'actif $i$ sur les rendements du marché. De cette façon, l'estimation représente la partie de l'actif exprimé par le marché. En d'autres mots, la sensibilité de l'actif au marché.
+Cette étape consiste à régresser les rendements de l'actif $i$ sur les rendements du marché. De cette façon, l'estimation représente la partie de l'actif exprimé par le marché. 
 $$
-R_i = \alpha_i + \beta_i R_M + \epsilon_i \tag{2}
+\boldsymbol{R_i} = \alpha_i + \beta_i\boldsymbol{R_M} + \boldsymbol{\epsilon_i} \tag{2}
 $$
 
 avec :
 
-- $R_i \in \mathbb{R}^{T \times 1}$ : vecteur des rendements de l’actif $i$ observés sur $T$ périodes ;
+- $\boldsymbol{R_i} \in \mathbb{R}^{T \times 1}$ : vecteur des rendements de l’actif $i$ observés sur $T$ périodes ;
 - $\alpha_i \in \mathbb{R}$ : constante représentant la partie du rendement non expliquée par le facteur de marché ;
 - $\beta_i \in \mathbb{R}$ : sensibilité de l’actif $i$ au rendement du marché (coefficient de régression) ;
-- $R_M \in \mathbb{R}^{T \times 1}$ : vecteur des rendements du marché sur les mêmes périodes ;
-- $\epsilon_i \in \mathbb{R}^{T \times 1}$ : vecteur des termes résiduels supposés centrés et non corrélés avec $R_M$.
+- $\boldsymbol{R_M} \in \mathbb{R}^{T \times 1}$ : vecteur des rendements du marché sur les mêmes périodes ;
+- $\boldsymbol{\epsilon_i}  \in \mathbb{R}^{T \times 1}$ : vecteur des termes résiduels supposés centrés et non corrélés avec $R_M$.
 
 ### Étape 2:  Régression des rendements moyens sur les bêtas estimés
 
@@ -104,7 +104,7 @@ avec :
 Cependant, cette approche présente deux limites majeures :
 
 -  **Incertitude sur les bêtas estimés**  
-   Les séries temporelles étant souvent courtes et bruyantes, surtout pour les actifs individuels, les bêtas estimés sont peu fiables. Cela induit un biais d’atténuation entre la relation des rendements et des bêtas.
+   Les séries temporelles étant souvent courtes et bruitées, en particulier pour les actifs individuels, les bêtas estimés manquent de fiabilité. Cette incertitude introduit un biais et complique la détection d’un lien clair entre les rendements et les expositions au risque de marché
 
 -  **Corrélation entre résidus**  
    Les actifs sont exposés à des chocs communs (macroéconomiques, sectoriels, etc.), ce qui viole l’hypothèse d’indépendance des résidus. Par conséquent, les erreurs standards sont sous-estimées, ce qui gonfle artificiellement la significativité des coefficients.
@@ -112,9 +112,7 @@ Cependant, cette approche présente deux limites majeures :
 
 ## Incertitude sur les bêtas estimés : Portefeuilles triés par bêta
 
-Face à ces problèmes, plusieurs chercheurs, notamment Blume (1970), Friend et Blume (1970), ainsi que Black, Jensen et Scholes (1972), ont proposé d’abandonner l’analyse des actifs individuels au profit de portefeuilles.
-
-L’idée est simple : en agrégeant plusieurs actifs, on atténue l’erreur de mesure sur les bêtas. Les portefeuilles offrent une exposition au facteur de marché plus stable, ce qui permet d’obtenir des estimations de bêta plus fiables.
+Face à ces problèmes, plusieurs chercheurs, notamment Blume (1970), Friend et Blume (1970), ainsi que Black, Jensen et Scholes (1972), ont proposé d’abandonner l’analyse des actifs individuels au profit de portefeuilles. L’idée est simple : en agrégeant plusieurs actifs, on atténue l’erreur de mesure sur les bêtas. Les portefeuilles offrent une exposition au facteur de marché plus stable, ce qui permet d’obtenir des estimations de bêta plus fiables.
 
 Cette méthode présente un avantage important, elle permet de se concentrer sur les caractéristiques agrégées des portefeuilles, sans se préoccuper de l’identité des actifs qui les composent. En effet, un actif individuel peut voir son bêta évoluer dans le temps, mais en rebalançant périodiquement les portefeuilles, il sera naturellement réaffecté selon sa nouvelle exposition au marché.
 
@@ -123,7 +121,7 @@ Ainsi, ce ne sont plus les actifs qui sont évalués de façon rigide, mais plut
 
 ### Méthodologie de tri
 
-La méthode consiste à :
+ La méthode pour trier les actifs dans les portefeuilles consiste à :
 
 1. Estimer les bêtas individuels.
 2. Trier les actifs par bêta croissant.
@@ -133,9 +131,7 @@ La méthode consiste à :
 
 Cette procédure permet de couvrir efficacement l’éventail des bêtas, tout en maximisant la variance entre les portefeuilles. La seule différence entre les portefeuilles sont le niveau des bêtas.  
 
-Cependant, comme le soulignent Fama et MacBeth (1973), cette méthodologie présente un biais potentiel aux extrémités de la distribution des portefeuilles. En effet, les erreurs de mesure dans l’estimation des bêtas peuvent être corrélées entre elles, ce qui entraîne une surestimation des bêtas pour les portefeuilles à haut bêta et une sous-estimation pour ceux à faible bêta.
-
-Autrement dit, les actifs les plus extrêmes dans le classement ont tendance à être sélectionnés en raison d’une erreur de mesure plutôt que de leur véritable exposition au risque de marché. Ce phénomène peut fausser l’interprétation de la relation entre bêta et rendement, en aplatissant artificiellement la pente estimée. Nous y reviendrons !
+Cependant, comme le soulignent Fama et MacBeth (1973), cette méthodologie présente un biais potentiel aux extrémités de la distribution des portefeuilles. En effet, les erreurs de mesure dans l’estimation des bêtas peuvent être corrélées entre elles, ce qui entraîne une surestimation des bêtas pour les portefeuilles à haut bêta et une sous-estimation pour ceux à faible bêta. Autrement dit, les actifs les plus extrêmes dans le classement ont tendance à être sélectionnés en raison d’une erreur de mesure plutôt que de leur véritable exposition au risque de marché. Ce phénomène peut fausser l’interprétation de la relation entre bêta et rendement, en aplatissant artificiellement la pente estimée. Nous y reviendrons !
 
 
 
@@ -177,7 +173,7 @@ $$
 
 où $\Sigma$ est la matrice de variance-covariance des rendements espérés. 
 
-Le cœur du problème est donc ici de savoir comment bien estimer $\Sigma$ ? Tel que mentionné dans Cochrane (2005), le réflexe naturel en statistique serait de faire une régression des moindre carrés généralisées. Toutefois, Fama et Macbeth (1973) proposent leur procédure en 2 étapes (ormis l'étape d'estimation des bêtas). Cette procédure permet de mieux prendre en compte la variabilité temporelle et la dépendance structurelle des rendements, sans avoir à estimer directement la matrice $\Sigma$.
+Le cœur du problème est donc ici de savoir comment bien estimer $\Sigma$. Tel que mentionné dans Cochrane (2005), le réflexe naturel en statistique serait de faire une régression des moindre carrés généralisées. Toutefois, Fama et Macbeth (1973) proposent leur procédure en 2 étapes (ormis l'étape d'estimation des bêtas). Cette procédure permet de mieux prendre en compte la variabilité temporelle et la dépendance structurelle des rendements, sans avoir à estimer directement la matrice $\Sigma$.
 
 
 ## La méthode Fama-MacBeth (1973)
@@ -191,61 +187,49 @@ Afin de réduire l’impact des erreurs de mesure dans l’estimation des bêtas
 
 L’enjeu ici est que les erreurs de mesure sur les bêtas ne sont pas aléatoires après tri. Les actifs dont les bêtas sont surévalués ont plus de chances d’être classés dans les portefeuilles de tête, et inversement pour ceux sous-évalués. Cela crée une forme de biais systématique à l’intérieur des groupes.
 
-Pour limiter cet effet, les bêtas des portefeuilles peuvent être réestimés sur une période ultérieure, par exemple de $T$ à $T + k$. L’objectif n’est pas de corriger parfaitement les bêtas individuels, mais de lisser les erreurs de mesure à travers l’agrégation. Ainsi, les bêtas de portefeuilles, calculés comme la moyenne des bêtas de leurs composantes, sont généralement plus stables et moins bruités.
+Pour limiter cet effet, les bêtas des portefeuilles peuvent être réestimés sur une période ultérieure, par exemple de $T$ à $T + k$. L’objectif n’est pas de corriger parfaitement les bêtas individuels, mais d'atténuer les erreurs de mesure à travers l’agrégation. Ainsi, les bêtas de portefeuilles, calculés comme la moyenne des bêtas de leurs composantes, sont généralement plus stables et moins bruités.
 
 <img src="/assets/Images/Capture d’écran, le 2025-07-08 à 10.44.39.png" alt="Diagramme Fama-MacBeth" style="max-width: 100%; height: auto;">
 
 La figure ci-dessus illustre cette logique. Chaque rectangle représente un portefeuille. Celui du haut regroupe les actifs aux bêtas estimés les plus élevés, tandis que celui du bas contient ceux aux bêtas les plus faibles. Le regroupement permet d’atténuer l’impact des erreurs individuelles ($u$) qui, en l’absence de correction, auraient tendance à biaiser les inférences statistiques.
 
 
-En 1992, Shanken montre que l’erreur de mesure sur les bêtas diminue lorsque l’horizon temporel $T$ tend vers l’infini. Autrement dit, avec suffisamment de données, il devient possible d’utiliser les actifs individuels sans que l’erreur de mesure ne compromette significativement les inférences.
-
-Toutefois, pour la suite, nous supposerons que les $\beta_i$ sont correctement estimés.
+En 1992, Shanken montre que l’erreur de mesure sur les bêtas diminue lorsque l’horizon temporel $T$ tend vers l’infini. Autrement dit, avec suffisamment de données, il devient possible d’utiliser les actifs individuels sans que l’erreur de mesure ne compromette significativement les inférences. Toutefois, pour la suite, nous supposerons que les $\beta_i$ sont correctement estimés.
 
 
 ### Estimation des primes de risque
 
-Le modèle (1) est en terme de rendement espéré. Cependant, comme nous venons tout juste de voir, estimer cette équation avec les rendements moyens posent des difficultés. L'innovation méthodologique de Fama-Macbeth se trouve dans l'équation ci-dessous,
+Le modèle présenté à l’équation (1) est exprimé en termes de rendement espéré. Cependant, comme nous venons tout juste de voir, estimer cette équation avec les rendements moyens posent des difficultés. L'innovation méthodologique de Fama-Macbeth se trouve dans l'équation ci-dessous,
 $$
 r_{i,t} = \gamma_{0,t} + \beta_i\gamma_{1,t} + \varepsilon_{i,t}. \tag{3}
 $$
 
 Où $r_{i,t}$ est le rendement de l'actif $i$ au temps $t$, $\gamma_{0,t}$ est l'ordonnée à l'origine au temps $t$, $\beta_i$ est le facteur d'exposition de l'actif $i$ au marché, $\gamma_{1,t}$ est la prime par unité de risque (*price of risk*) et $\varepsilon_{i,t}$ est l'erreur aléatoire de l'actif $i$ au temps $t$. 
 
-Ils proposent un modèle stochastique période par période laissant varier les primes de risque aléatoirement autour du vrai paramètre sous l'hypothèse de marché efficient, c'est-à-dire, que les prix sont le reflet de toutes l'informations disponibles et qu'il est impossible de battre le marché d'une quelconque stratégie autre que l'exposition aux risques systématiques. Les prix réagissent seulement à la nouvelle information et les variations au temps $t$ sont des erreurs aléatoires de moyenne nulle. 
+Ils proposent un modèle stochastique dans lequel les primes de risque varient aléatoirement d’une période à l’autre autour du vrai paramètre, sous l’hypothèse d’un marché efficient. Autrement dit, les prix reflètent toute l'information disponible, réagissent uniquement aux nouvelles et les variations observées au temps $t$ sont des erreurs aléatoires de moyenne nulle.
 
 La méthodologie peut sembler complexe, mais elle se résume ainsi :
 
-### Étape 1 :
-
-- Estimer pour chaque actif $i$ les $\beta_i$ avec la régression en série temporelle suivante :
+### Étape 1 : Estimer pour chaque actif $i$ les $\beta_i$ avec l'équation (2):
 
 $$
-R_i = \alpha_i + \beta_i R_M + \epsilon_i
+\boldsymbol{R_i} = \alpha_i + \beta_i\boldsymbol{R_M} + \boldsymbol{\epsilon_i}
 $$
 
-Où $R_i$ est le vecteur de rendement de l'actif $i$ de dimension $T \times 1$, $\alpha_i$ est la partie non expliquée par le marché pour l'actif $i$, $\beta_i$ est la sensibilité de l'actif au marché, $R_M$ est le rendement du marché et $\epsilon_i$ est l'erreur résiduelle.
-
-
-
-### Étape 2 :
-
-- Effectuer $T$ régressions en coupe transversale :
+### Étape 2 : Effectuer $T$ régressions en coupe transversale :
 
 $$
-R_t = \gamma_{0,t} + \beta\gamma_{1,t} + \varepsilon_t
+\boldsymbol{R_t} = \gamma_{0,t} + \boldsymbol{\beta}\gamma_{1,t} + \boldsymbol{\varepsilon_t}
 $$
 
-Où $R_t$ est un vecteur de rendement des actifs de dimension $N \times 1$, $\gamma_{0,t}$ est la prime de risque associée aux bêtas nuls, $\beta$ est le vecteur de tout les expositions des actifs calculées à l'étape 1 de dimension $N \times 1$, $\gamma_{1,t}$ est la prime de risque associée au marché au temps $t$ et $\varepsilon_t$ est l'erreur résiduelle au temps $t$. 
+Où $\boldsymbol{R_t}$ est un vecteur de rendement des actifs de dimension $N \times 1$, $\gamma_{0,t}$ est la prime de risque associée aux bêtas nuls, $\boldsymbol{\beta}$ est le vecteur de tout les expositions des actifs calculées à l'étape 1 de dimension $N \times 1$, $\gamma_{1,t}$ est la prime de risque associée au marché au temps $t$ et $\boldsymbol{\varepsilon_t}$ est le vecteur des erreurs résiduelles au temps $t$. 
 
 
-### Étape 3 :
-
-- Estimation des primes de risques
+### Étape 3 : Estimation des primes de risques
 
 $$
 \begin{aligned}
-\hat\gamma_{0}  = \frac{\sum^{T}\hat\gamma_{0,t}}{T}  \\
+\hat\gamma_{0}  = \frac{\sum^{T}\hat\gamma_{0,t}}{T}  \\ \\
 \hat\gamma_{1}  = \frac{\sum^{T}\hat\gamma_{1,t}}{T} 
 \end{aligned}
 $$
@@ -342,7 +326,7 @@ $$
 
 Les résultats du tableau 1 indiquent que la prime de risque associée au facteur de marché (le bêta) est faible et statistiquement non significative (statistique-t de 0,49). En revanche, les facteurs liés à la taille et à la valeur sont tous deux significatifs à des niveaux conventionnels.
 
-Autrement dit, le bêta ne semble pas constituer, à lui seul, une source de risque systématiquement récompensée. À l’inverse, les actions de petite capitalisation (valeurs faibles de log(MV)) et celles ayant un fort ratio valeur comptable / valeur de marché (B/M) affichent des primes de risque significatives, remettant ainsi en question la validité empirique du CAPM.
+Autrement dit, le bêta ne semble pas constituer, à lui seul, une source de risque récompensée. À l’inverse, les actions de petite capitalisation (valeurs faibles de log(MV)) et celles ayant un fort ratio valeur comptable / valeur de marché (B/M) affichent des primes de risque significatives, remettant ainsi en question la validité empirique du CAPM.
 
 Le coefficient négatif associé au facteur de taille est cohérent avec l’idée que le risque supplémentaire encouru en investissant dans des entreprises de plus petite taille doit être compensé en moyenne par un rendement attendu plus élevé.
 
