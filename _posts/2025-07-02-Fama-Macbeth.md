@@ -210,6 +210,7 @@ Ils proposent un modèle stochastique dans lequel les primes de risque varient a
 
 La méthodologie peut sembler complexe, mais elle se résume ainsi :
 
+
 ### Étape 1 : Estimer pour chaque actif $i$ les $\beta_i$ avec l'équation (2):
 
 $$
